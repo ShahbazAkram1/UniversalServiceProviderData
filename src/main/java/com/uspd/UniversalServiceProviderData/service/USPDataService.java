@@ -1,6 +1,9 @@
 package com.uspd.UniversalServiceProviderData.service;
 
 import com.uspd.UniversalServiceProviderData.entity.USPDataEntity;
+
+import java.util.List;
+
 /**
  * Author: Shahbaz Ali
  * Email: shahbazkhaniq@gmail.com
@@ -12,5 +15,7 @@ import com.uspd.UniversalServiceProviderData.entity.USPDataEntity;
 public interface USPDataService {
 
     USPDataEntity createUniversalServiceProviderData(USPDataEntity universalServiceProviderData);
+
+    List<USPDataEntity> getAllUniversalServiceProviderData();
 
 }

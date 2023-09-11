@@ -14,6 +14,8 @@ import com.uspd.UniversalServiceProviderData.repository.USPDataRepository;
 import com.uspd.UniversalServiceProviderData.service.USPDataService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class USPDataServiceImpl implements USPDataService {
 
@@ -26,5 +28,10 @@ public class USPDataServiceImpl implements USPDataService {
     @Override
     public USPDataEntity createUniversalServiceProviderData(USPDataEntity universalServiceProviderData) {
         return uspDataRepository.save(universalServiceProviderData);
+    }
+
+    @Override
+    public List<USPDataEntity> getAllUniversalServiceProviderData() {
+        return uspDataRepository.findAll();
     }
 }
