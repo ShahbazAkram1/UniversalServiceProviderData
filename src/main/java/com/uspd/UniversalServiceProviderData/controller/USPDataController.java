@@ -11,10 +11,7 @@ package com.uspd.UniversalServiceProviderData.controller;
 
 import com.uspd.UniversalServiceProviderData.entity.USPDataEntity;
 import com.uspd.UniversalServiceProviderData.service.USPDataService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,6 +33,12 @@ public class USPDataController {
     public List<USPDataEntity> getAllUniversalServiceProviderData() {
         return uspDataService.getAllUniversalServiceProviderData();
     }
+
+    @GetMapping("/universal-service-provider-data/{id}")
+    public USPDataEntity getUniversalServiceProviderDataById(@PathVariable Long id) {
+        return uspDataService.getUniversalServiceProviderDataById(id);
+    }
+
 
 
 }

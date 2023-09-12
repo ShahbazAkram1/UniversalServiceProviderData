@@ -18,4 +18,6 @@ public interface USPDataService {
 
     List<USPDataEntity> getAllUniversalServiceProviderData();
 
+    USPDataEntity getUniversalServiceProviderDataById(Long id);
+
 }

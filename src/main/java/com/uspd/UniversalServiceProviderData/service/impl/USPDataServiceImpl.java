@@ -34,4 +34,9 @@ public class USPDataServiceImpl implements USPDataService {
     public List<USPDataEntity> getAllUniversalServiceProviderData() {
         return uspDataRepository.findAll();
     }
+
+    @Override
+    public USPDataEntity getUniversalServiceProviderDataById(Long id) {
+        return uspDataRepository.findById(id).orElse(null);
+    }
 }
