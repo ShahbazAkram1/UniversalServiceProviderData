@@ -39,4 +39,19 @@ public class USPDataServiceImpl implements USPDataService {
     public USPDataEntity getUniversalServiceProviderDataById(Long id) {
         return uspDataRepository.findById(id).orElse(null);
     }
+
+    @Override
+    public USPDataEntity updateUniversalServiceProviderData(Long id, USPDataEntity universalServiceProviderData) {
+        USPDataEntity existingUniversalServiceProviderData = getUniversalServiceProviderDataById(id);
+        if (existingUniversalServiceProviderData != null) {
+            existingUniversalServiceProviderData.setName(universalServiceProviderData.getName());
+            existingUniversalServiceProviderData.setAddress(universalServiceProviderData.getAddress());
+            existingUniversalServiceProviderData.setPhoneNumber(universalServiceProviderData.getPhoneNumber());
+            existingUniversalServiceProviderData.setWebsite(universalServiceProviderData.getWebsite());
+
+            return uspDataRepository.save(existingUniversalServiceProviderData);
+        } else {
+            return null;
+        }
+    }
 }

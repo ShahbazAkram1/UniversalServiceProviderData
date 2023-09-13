@@ -39,6 +39,9 @@ public class USPDataController {
         return uspDataService.getUniversalServiceProviderDataById(id);
     }
 
-
+    @PutMapping("/universal-service-provider-data/{id}")
+    public USPDataEntity updateUniversalServiceProviderData(@PathVariable Long id, @RequestBody USPDataEntity uspDataEntity) {
+        return uspDataService.updateUniversalServiceProviderData(id, uspDataEntity);
+    }
 
 }

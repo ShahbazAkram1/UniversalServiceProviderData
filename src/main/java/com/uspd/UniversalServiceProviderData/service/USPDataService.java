@@ -20,4 +20,6 @@ public interface USPDataService {
 
     USPDataEntity getUniversalServiceProviderDataById(Long id);
 
+    USPDataEntity updateUniversalServiceProviderData(Long id, USPDataEntity universalServiceProviderData);
+
 }
