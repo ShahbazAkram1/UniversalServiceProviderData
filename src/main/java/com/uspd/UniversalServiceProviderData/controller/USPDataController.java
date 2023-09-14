@@ -44,4 +44,9 @@ public class USPDataController {
         return uspDataService.updateUniversalServiceProviderData(id, uspDataEntity);
     }
 
+    @DeleteMapping("/universal-service-provider-data/{id}")
+    public void deleteUniversalServiceProviderData(@PathVariable Long id) {
+        uspDataService.deleteUniversalServiceProviderData(id);
+    }
+
 }

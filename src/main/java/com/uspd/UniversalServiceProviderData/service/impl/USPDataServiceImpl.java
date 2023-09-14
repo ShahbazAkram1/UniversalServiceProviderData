@@ -54,4 +54,9 @@ public class USPDataServiceImpl implements USPDataService {
             return null;
         }
     }
+
+    @Override
+    public void deleteUniversalServiceProviderData(Long id) {
+        uspDataRepository.deleteById(id);
+    }
 }

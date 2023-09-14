@@ -22,4 +22,5 @@ public interface USPDataService {
 
     USPDataEntity updateUniversalServiceProviderData(Long id, USPDataEntity universalServiceProviderData);
 
+    void deleteUniversalServiceProviderData(Long id);
 }
