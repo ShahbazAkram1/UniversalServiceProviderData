@@ -10,6 +10,7 @@
 package com.uspd.UniversalServiceProviderData.service.impl;
 
 import com.uspd.UniversalServiceProviderData.entity.USPDataEntity;
+import com.uspd.UniversalServiceProviderData.exception.CustomJsonSerializationException;
 import com.uspd.UniversalServiceProviderData.repository.USPDataRepository;
 import com.uspd.UniversalServiceProviderData.service.USPDataService;
 import org.springframework.stereotype.Service;
@@ -37,12 +38,20 @@ public class USPDataServiceImpl implements USPDataService {
 
     @Override
     public USPDataEntity getUniversalServiceProviderDataById(Long id) {
-        return uspDataRepository.findById(id).orElse(null);
+        USPDataEntity uspData = uspDataRepository.findById(id).orElse(null);
+        if (uspData==null){
+            throw new CustomJsonSerializationException("Universal service provider data not found",new Exception());
+        }
+        return uspData;
+
     }
 
     @Override
     public USPDataEntity updateUniversalServiceProviderData(Long id, USPDataEntity universalServiceProviderData) {
         USPDataEntity existingUniversalServiceProviderData = getUniversalServiceProviderDataById(id);
+        if (existingUniversalServiceProviderData == null) {
+            throw new CustomJsonSerializationException("Universal service provider data not found",new Exception());
+        }
         if (existingUniversalServiceProviderData != null) {
             existingUniversalServiceProviderData.setName(universalServiceProviderData.getName());
             existingUniversalServiceProviderData.setAddress(universalServiceProviderData.getAddress());

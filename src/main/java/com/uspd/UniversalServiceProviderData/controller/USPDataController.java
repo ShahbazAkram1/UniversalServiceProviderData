@@ -10,7 +10,10 @@
 package com.uspd.UniversalServiceProviderData.controller;
 
 import com.uspd.UniversalServiceProviderData.entity.USPDataEntity;
+import com.uspd.UniversalServiceProviderData.exception.InvalidateFormatException;
+import com.uspd.UniversalServiceProviderData.exception.RequiredFieldValidationException;
 import com.uspd.UniversalServiceProviderData.service.USPDataService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +29,26 @@ public class USPDataController {
 
     @PostMapping("/universal-service-provider-data")
     public USPDataEntity createUniversalServiceProviderData(@RequestBody USPDataEntity universalServiceProviderData) {
+
+        if (StringUtils.isNotBlank(universalServiceProviderData.getName())) {
+            throw new RequiredFieldValidationException("Universal service provider data: name is required", new Exception());
+        }
+        if (StringUtils.isBlank(universalServiceProviderData.getAddress())) {
+            throw new RequiredFieldValidationException("Universal service provider data: address is required", new Exception());
+        }
+
+        if (StringUtils.isBlank(universalServiceProviderData.getPhoneNumber())) {
+            throw new RequiredFieldValidationException("Universal service provider data: phone number is required", new Exception());
+        }
+
+        if (StringUtils.isBlank(universalServiceProviderData.getWebsite())) {
+            throw new RequiredFieldValidationException("Universal service provider data: website is required", new Exception());
+        }
+
+        if (StringUtils.isBlank(universalServiceProviderData.getDate())) {
+            throw new InvalidateFormatException("Universal service provider data: date is required", new Exception());
+        }
+
         return uspDataService.createUniversalServiceProviderData(universalServiceProviderData);
     }
 

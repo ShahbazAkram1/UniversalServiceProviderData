@@ -31,4 +31,5 @@ public class USPDataEntity {
     private String address;
     private String phoneNumber;
     private String website;
+    private String date;
 }
